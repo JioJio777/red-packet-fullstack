@@ -1,0 +1,29 @@
+# Go
+backend/vendor/
+backend/*.exe
+backend/*.exe~
+backend/*.dll
+backend/*.so
+backend/*.dylib
+backend/tmp/
+
+# 环境配置（含数据库密码等敏感信息，不能提交）
+**/.env
+**/config.yaml
+**/config.yml
+**/config.local.yaml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (前端)
+frontend/node_modules/
+frontend/dist/
+frontend/build/
