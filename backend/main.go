@@ -6,6 +6,7 @@ import (
 	"red-packet/config"
 	"red-packet/database"
 	"red-packet/router"
+	"red-packet/service"
 )
 
 func main() {
@@ -18,6 +19,8 @@ func main() {
 		log.Fatalf("failed to init database: %v", err)
 	}
 	log.Println("database connected and migrated")
+
+	service.InitUserService(cfg.JWT.Secret, cfg.JWT.ExpireHours)
 
 	r := router.NewRouter()
 	r.Run(":" + cfg.Server.Port)
