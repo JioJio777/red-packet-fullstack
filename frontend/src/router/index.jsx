@@ -1,8 +1,8 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import ProtectedRoute from '../components/ProtectedRoute'
 import HomePage from '../pages/HomePage'
+import LoginPage from '../pages/LoginPage'
 
-// 登录和注册页面后续步骤再补充
 const router = createBrowserRouter([
   {
     path: '/',
@@ -14,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <div>登录页（待实现）</div>,
+    element: <LoginPage />,
   },
   {
     path: '/register',
