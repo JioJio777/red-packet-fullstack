@@ -1,0 +1,14 @@
+server:
+  port: "8080"
+
+database:
+  dsn: "root:yourpassword@tcp(127.0.0.1:3306)/red_packet?charset=utf8mb4&parseTime=True&loc=Local"
+
+redis:
+  addr: "127.0.0.1:6379"
+  password: ""
+  db: 0
+
+jwt:
+  secret: "change-this-to-a-random-string"
+  expire_hours: 24
