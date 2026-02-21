@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"errors"
 	"red-packet/database"
 	"red-packet/model"
 
@@ -92,8 +93,15 @@ func CreateTransaction(tx *gorm.DB, t *model.Transaction) error {
 }
 
 func DeductUserBalance(tx *gorm.DB, userID uint64, amount uint64) error {
-	return tx.Model(&model.User{}).Where("id = ? AND balance >= ?", userID, amount).
-		UpdateColumn("balance", gorm.Expr("balance - ?", amount)).Error
+	result := tx.Model(&model.User{}).Where("id = ? AND balance >= ?", userID, amount).
+		UpdateColumn("balance", gorm.Expr("balance - ?", amount))
+	if result.Error != nil {
+		return result.Error
+	}
+	if result.RowsAffected == 0 {
+		return errors.New("insufficient balance")
+	}
+	return nil
 }
 
 func AddUserBalance(tx *gorm.DB, userID uint64, amount uint64) error {
