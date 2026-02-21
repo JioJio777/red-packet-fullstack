@@ -3,6 +3,9 @@ import ProtectedRoute from '../components/ProtectedRoute'
 import HomePage from '../pages/HomePage'
 import LoginPage from '../pages/LoginPage'
 import RegisterPage from '../pages/RegisterPage'
+import SendRedPacketPage from '../pages/SendRedPacketPage'
+import RedPacketDetailPage from '../pages/RedPacketDetailPage'
+import MyPacketsPage from '../pages/MyPacketsPage'
 
 const router = createBrowserRouter([
   {
@@ -10,6 +13,30 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <HomePage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/send',
+    element: (
+      <ProtectedRoute>
+        <SendRedPacketPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/red-packets/:id',
+    element: (
+      <ProtectedRoute>
+        <RedPacketDetailPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/my-packets',
+    element: (
+      <ProtectedRoute>
+        <MyPacketsPage />
       </ProtectedRoute>
     ),
   },
